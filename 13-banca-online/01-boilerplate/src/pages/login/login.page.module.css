@@ -1,0 +1,12 @@
+.header {
+  height: 15vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.logo {
+  width: 200px;
+}
