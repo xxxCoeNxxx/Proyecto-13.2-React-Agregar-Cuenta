@@ -1,6 +1,7 @@
 import React from "react";
 import { Credentials, CredentialsFormErrors, createEmptyCredentials, createEmptyCredentialsFormErrors } from "../login.vm";
 import { validateform } from "../login.validation";
+import classes from "./login-form.component.module.css"
 
 interface Props {
   onLogin: (credentials: Credentials) => void;
@@ -33,19 +34,19 @@ export const LoginFormComponent: React.FC<Props> = (props) => {
   };
 
   return (
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit} className={classes.form}>
         <div>
-          <label htmlFor="username">Usuario</label>
-          <input type="text" id="username" name="user" onChange={handleFieldChange}
-          ></input>
-          {errors.user && <p>{errors.user}</p>}
+          <input type="text" id="username" name="user" onChange={handleFieldChange} placeholder="Usuario"
+          className={errors.user ? classes.inputError : ""}
+          />
+          {errors.user && <p className={classes.error}>{errors.user}</p>}
         </div>
         <div>
-          <label htmlFor="password">Contraseña</label>
-          <input type="password" id="password" name="password" onChange={handleFieldChange}
-          ></input>
-          {errors.password && <p>{errors.password}</p>}
+          <input type="password" id="password" name="password" onChange={handleFieldChange} placeholder="Clave"
+          className={errors.password ? classes.inputError : ""}
+          />
+          {errors.password && <p className={classes.error}>{errors.password}</p>}
         </div>
-        <button type="submit">Acceder</button>
+        <button type="submit" className={classes.btnEnviar}>Acceder</button>
       </form>
   )}
