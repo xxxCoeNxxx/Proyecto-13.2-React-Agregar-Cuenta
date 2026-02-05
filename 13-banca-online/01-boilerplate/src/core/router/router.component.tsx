@@ -13,6 +13,7 @@ export const Router = () => {
       <Route path={appRoutes.movements} element={<MovementListPage/>} />
       <Route path={appRoutes.transfer} element={<TransferPage/>} />
       <Route path={appRoutes.transferFromAccount} element={<TransferPage/>} />
+      <Route path={appRoutes.movementsFromAccount} element={<MovementListPage/>} />
     </Routes>
   </BrowserRouter>
   )
