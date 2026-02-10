@@ -1,10 +1,11 @@
 import { appRoutes, routesPrefixes } from "@/core/router";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, /* useParams */ } from "react-router-dom";
 import classes from "./navbar.component.module.css";
 
 export const NavBarComponent: React.FC = () => {
   const { pathname } = useLocation();
+  /* const { id: accountId } = useParams<{ id: string}>(); */
 
   return (
     <nav className={classes.navbar}>
@@ -17,6 +18,14 @@ export const NavBarComponent: React.FC = () => {
           }
         >
           <Link to={appRoutes.accountList}>Mis Cuentas</Link>
+        </li>
+        <li
+          className={
+            pathname.startsWith(routesPrefixes.movements) ? classes.selected : ""
+          }
+        >
+          {/* <Link to={`${appRoutes.movements}/${accountId}`}>Movimientos</Link> */}
+          Movimientos
         </li>
         <li
           className={

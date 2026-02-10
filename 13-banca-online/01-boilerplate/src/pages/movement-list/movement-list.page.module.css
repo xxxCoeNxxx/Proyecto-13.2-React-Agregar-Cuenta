@@ -8,12 +8,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border-bottom: 5px solid var(--secondary_color);
 }
 
 .header-container h1 {
   font-size: 2.2rem;
   font-weight: 300;
+}
+
+.account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alias,
+.iban {
+  margin: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.balance-info {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.balance-info p {
+  color: var(--primary_color);
+  text-align: right;
+  margin: 0;
+  font-size: x-large;
+}
+
+.balance-info h2 {
+  font-size: x-small;
+}
+
+.negative-balance {
+  color: red;
+  text-align: right;
+  margin: 0;
 }
