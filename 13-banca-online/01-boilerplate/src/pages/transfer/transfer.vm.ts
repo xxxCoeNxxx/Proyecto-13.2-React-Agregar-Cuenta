@@ -51,12 +51,3 @@ export const createEmptyTransferError = (): TransferError => ({
   email: "",
 });
 
-export interface FieldValidationResult {
-  succeeded: boolean;
-  errorMessage?: string;
-}
-
-export interface FormValidationResult {
-  succeeded: boolean;
-  errors: TransferError;
-}

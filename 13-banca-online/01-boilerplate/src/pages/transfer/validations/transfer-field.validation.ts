@@ -1,28 +1,92 @@
-import { isStringValueInformed, isValidIban } from "@/common/validations";
-import { FieldValidationResult } from "../transfer.vm";
+import {
+  buildRequiredFieldValidationFailedResponse,
+  buildValidationFailedResult,
+  buildValidationSucceededResult,
+  isDateAfterToday,
+  isEmailWellFormed,
+  isPositiveNumber,
+  isStringValueInformed,
+  isValidIban,
+  isValueNotNullOrUndefined,
+} from "@/common/validations";
 
-export const REQUIRED_FIELD_MESSAGE = "Debe informar el campo";
-export const INVALID_IBAN_MESSAGE = "El IBAN no está bien formado";
-
-const buildValidationFailedResult = (
-  errorMessage: string,
-): FieldValidationResult => ({
-  succeeded: false,
-  errorMessage,
-});
-
-const buildValidationSucceededResult = () => ({
-  succeeded: true,
-});
+import {
+  INVALID_IBAN_MESSAGE,
+  INVALID_AMOUNT_MESSAGE,
+  INVALID_EMAIL_MESSAGE,
+  INVALID_REAL_DATE_TRANSFER_MESSAGE,
+  FieldValidationResult
+} from "@/common/validations";
 
 export const validateIBANField = (value: string): FieldValidationResult => {
   if (!isStringValueInformed(value)) {
-    return buildValidationFailedResult(REQUIRED_FIELD_MESSAGE);
+    return buildRequiredFieldValidationFailedResponse();
   }
 
   if (!isValidIban(value)) {
     return buildValidationFailedResult(INVALID_IBAN_MESSAGE);
   }
 
+  return buildValidationSucceededResult();
+};
+
+export const validateAccountIdField = (
+  value: string,
+): FieldValidationResult => {
+  if (!isStringValueInformed(value)) {
+    return buildRequiredFieldValidationFailedResponse();
+  }
+
+  return buildValidationSucceededResult();
+};
+
+export const validateNameField = (value: string): FieldValidationResult => {
+  if (!isStringValueInformed(value)) {
+    return buildRequiredFieldValidationFailedResponse();
+  }
+
+  return buildValidationSucceededResult();
+};
+
+export const validateAmountField = (value: number): FieldValidationResult => {
+  if (!isPositiveNumber(value)) {
+    return buildValidationFailedResult(INVALID_AMOUNT_MESSAGE);
+  }
+
+  return buildValidationSucceededResult();
+};
+
+export const validateConceptField = (value: string): FieldValidationResult => {
+  if (!isStringValueInformed(value)) {
+    return buildRequiredFieldValidationFailedResponse();
+  }
+
+  return buildValidationSucceededResult();
+};
+
+export const validateNotesField = (_: string): FieldValidationResult =>
+  buildValidationSucceededResult();
+
+export const validateRealDateTransferField = (
+  value?: string,
+): FieldValidationResult => {
+  if (!isValueNotNullOrUndefined(value)) {
+    return buildValidationSucceededResult();
+  }
+
+  if (value && !isDateAfterToday(value)) {
+    return buildValidationFailedResult(INVALID_REAL_DATE_TRANSFER_MESSAGE);
+  }
+
+  return buildValidationSucceededResult();
+};
+
+export const validateEmailField = (value?: string): FieldValidationResult => {
+  if (!isValueNotNullOrUndefined(value)) {
+    return buildValidationSucceededResult();
+  }
+  if (value && !isEmailWellFormed(value)) {
+    return buildValidationFailedResult(INVALID_EMAIL_MESSAGE);
+  }
   return buildValidationSucceededResult();
 };

@@ -108,28 +108,5 @@
       "accountId": "3"
     }
   ],
-  "transfer": [
-    {
-      "accountId": "2",
-      "iban": "GB29NWBK60161331926819",
-      "name": "Pedro",
-      "amount": "100",
-      "concept": "Cena",
-      "notes": "",
-      "transferDate": "Thu Feb 12 2026",
-      "realTransferDate": "",
-      "id": 1
-    },
-    {
-      "accountId": "2",
-      "iban": "GB29NWBK60161331926819",
-      "name": "Pedro",
-      "amount": "100",
-      "concept": "Cena",
-      "notes": "",
-      "transferDate": "Thu Feb 12 2026",
-      "realTransferDate": "",
-      "id": 2
-    }
-  ]
+  "transfer": []
 }
