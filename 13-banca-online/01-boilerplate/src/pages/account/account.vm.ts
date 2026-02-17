@@ -1,4 +1,7 @@
-export type AccountType = "corriente" | "ahorro" | "nomina";
+export type AccountType =
+  | "corriente"
+  | "ahorro"
+  | "nomina";
 
 export interface CreateAccountVm {
   type: AccountType;
