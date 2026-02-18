@@ -1,21 +1,26 @@
 import * as apiModel from "./api";
 import * as viewModel from "./account.vm";
 
-const mapAccountTypeFromApiToVm = (type: string): viewModel.AccountType => {
+const mapAccountTypeToApi = (type: viewModel.AccountType): apiModel.AccountTypeApi => {
   switch (type) {
     case "corriente":
+      return "1";
     case "ahorro":
+      return "2";
     case "nomina":
-      return type;
+      return "3";
     default:
       throw new Error(`Unknown account type: ${type}`);
   }
 };
-export const mapAccountFromApiToVm = (
-  account: apiModel.Account,
-): viewModel.CreateAccountVm => ({
-  type: mapAccountTypeFromApiToVm(account.type),
-  alias: account.alias,
-});
 
-/* validar los campos */
+export const mapAccountToApi = (
+  account: viewModel.Account,
+): apiModel.AccountApi => ({
+  id: "",
+  iban: "",
+  type: mapAccountTypeToApi(account.type),
+  name: account.alias,
+  balance: 0,
+  lastTransactions: "",
+});

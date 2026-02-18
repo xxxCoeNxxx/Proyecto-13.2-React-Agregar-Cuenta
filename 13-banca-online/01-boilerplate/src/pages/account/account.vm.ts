@@ -3,12 +3,21 @@ export type AccountType =
   | "ahorro"
   | "nomina";
 
-export interface CreateAccountVm {
+export interface Account {
   type: AccountType;
   alias: string;
 }
 
-export const createEmptyAccount = (): CreateAccountVm => ({
-  alias: "",
+export const createEmptyAccount = (): Account => ({
   type: "corriente",
+  alias: "",
+});
+
+export interface CreateAccountError {
+  type?: string;
+  alias?: string;
+}
+export const createEmptyAccountError = (): CreateAccountError => ({
+  type: "",
+  alias: "",
 });
