@@ -4,6 +4,7 @@ import { CreateAccountFormComponent } from "./components/account-form.component"
 import { Account } from "./account.vm";
 import { saveAccount } from "./api";
 import { mapAccountToApi } from "./account.mapper";
+import classes from "./account.page.module.css";
 
 export const AccountPage: React.FC = () => {
   const handleAccount = (newAccount: Account) => {
@@ -20,9 +21,10 @@ export const AccountPage: React.FC = () => {
 
   return (
     <AppLayout>
-      <CreateAccountFormComponent
-        handleAccount={handleAccount}
-      />
+      <div className={classes.container}>
+        <h1 className={classes.title}>Cuenta Bancaria</h1>
+        <CreateAccountFormComponent handleAccount={handleAccount} />
+      </div>
     </AppLayout>
   );
 };

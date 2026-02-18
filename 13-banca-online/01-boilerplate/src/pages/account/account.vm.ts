@@ -1,4 +1,5 @@
 export type AccountType =
+  | ""
   | "corriente"
   | "ahorro"
   | "nomina";
@@ -9,7 +10,7 @@ export interface Account {
 }
 
 export const createEmptyAccount = (): Account => ({
-  type: "corriente",
+  type: "",
   alias: "",
 });
 

@@ -34,7 +34,7 @@ export const AccountListItemComponent: React.FC<Props> = (props) => {
   return (
     <div className={classes.row}>
       <span className={`${classes.dataCell} ${classes.bold}`}>
-        <Link to={generatePath(appRoutes.movements, { id: accountItem.id })}>
+        <Link to={generatePath(appRoutes.movementsFromAccount, { id: accountItem.id })}>
           {accountItem.iban}
         </Link>
       </span>

@@ -16,8 +16,8 @@ export const validateForm = (
   const formValidationResult = {
     succeeded: fieldValidationResults.every((f) => f.succeeded),
     errors: {
-      type: fieldValidationResults[0].errorMessage ?? "",
-      alias: fieldValidationResults[1].errorMessage ?? "",
+      alias: fieldValidationResults[0].errorMessage ?? "",
+      type: fieldValidationResults[1].errorMessage ?? "",
     },
   };
 

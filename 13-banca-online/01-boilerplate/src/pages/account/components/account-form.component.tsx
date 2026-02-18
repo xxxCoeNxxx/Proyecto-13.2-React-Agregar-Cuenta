@@ -6,6 +6,7 @@ import {
   createEmptyAccountError,
 } from "../account.vm";
 import { validateForm } from "../validations";
+import classes from "./account-form.component.module.css";
 
 interface Props {
   handleAccount: (account: Account) => void;
@@ -35,27 +36,44 @@ export const CreateAccountFormComponent: React.FC<Props> = (props) => {
 
     if (validationErrors.succeeded) {
       handleAccount(account);
+      setAccount(createEmptyAccount());
     }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <select name="type" value={account.type} onChange={handleFieldChange}>
-          <option value="">Seleccionar</option>
-          <option value="corriente">corriente</option>
-          <option value="ahorro">ahorro</option>
-          <option value="nomina">nómina</option>
-        </select>
-        <p /* className={classes.error} */>{errors.type}</p>
-        <input
-          type="string"
-          name="alias"
-          value={account.alias}
-          onChange={handleFieldChange}
-        />
-        <p /* className={classes.error} */>{errors.alias}</p>
-        <button type="submit">Guardar</button>
+        <div className={classes.formContainer}>
+          <div>
+            <label>Tipo de cuenta:</label>
+            <select
+              name="type"
+              value={account.type}
+              onChange={handleFieldChange}
+              className={classes.medium}
+            >
+              <option value="">Seleccionar</option>
+              <option value="corriente">corriente</option>
+              <option value="ahorro">ahorro</option>
+              <option value="nomina">nómina</option>
+            </select>
+            <p className={classes.error}>{errors.type}</p>
+          </div>
+          <div>
+            <label>Alias:</label>
+            <input
+              type="string"
+              name="alias"
+              value={account.alias}
+              onChange={handleFieldChange}
+              className={classes.medium}
+            />
+            <p className={classes.error}>{errors.alias}</p>
+          </div>
+        </div>
+        <button type="submit" className={classes.button}>
+          Guardar
+        </button>
       </form>
     </div>
   );
